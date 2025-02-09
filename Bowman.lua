@@ -13,7 +13,7 @@ SMODS.Joker {
             "Gains {C:mult}+#2#{} Mult for",
             "each card scored,",
             "resets at end of round.",
-            "{C:inactive}(Currently {C:mult}+#!#{C:inactive} Mult)"
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
     },
     config = { extra = { mult = 0, mult_gain = 1 } },
