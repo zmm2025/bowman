@@ -10,9 +10,9 @@ SMODS.Joker {
     loc_txt = {
         name = "Willy T.",
         text = {
-            "Gains {C:mult}+#2#{} Mult for",
-            "each card scored,",
-            "resets at end of round.",
+            "This Joker gains {C:mult}+#2#{} Mult",
+            "for each card scored,",
+            "resets at end of round",
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
     },
