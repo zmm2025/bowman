@@ -92,7 +92,7 @@ SMODS.Joker {
     config = {
         extra = {
             mult = 0,
-            mult_gain = 1,
+            mult_gain = 2,
             cards_to_score = 7,
             scored_cards = 7,
         },
