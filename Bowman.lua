@@ -5,6 +5,7 @@ SMODS.Atlas {
     path = "jokers-bowman.png",
 }
 
+-- Joker: Willy T.
 SMODS.Joker {
     key = "willy_t",
     loc_txt = {
