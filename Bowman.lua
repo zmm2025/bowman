@@ -24,7 +24,7 @@ SMODS.Joker {
     eternal_compat = true,
 
     atlas = "Bowman",
-    pos = { x = 1, y = 0 },
+    pos = { x = 0, y = 0 },
     
     loc_vars = function(self, info_queue, card)
         return {
