@@ -40,9 +40,9 @@ SMODS.Joker {
         if context.main_scoring and context.cardarea == G.play and not context.blueprint then
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
-                card = card
+                card = card,
                 colour = G.C.MULT,
-                message = localize("k_upgrade_ex"),
+                message = localize("k_upgrade_ex")
             }
         end
         
@@ -55,8 +55,8 @@ SMODS.Joker {
                     vars = {
                         card.ability.extra.mult
                     }
-                }
-                mult_mod = card.ability.extra.mult,
+                },
+                mult_mod = card.ability.extra.mult
             }
         end
 
@@ -64,7 +64,7 @@ SMODS.Joker {
         if context.end_of_round and context.cardarea == G.jokers then
             card.ability.extra.mult = 0
             return {
-                card = card
+                card = card,
                 colour = G.C.MULT,
                 message = localize("k_reset")
             }
