@@ -1,0 +1,13 @@
+{
+    "id": "Bowman",
+    "name": "Bowman",
+    "author": ["zmm2025"],
+    "description": "Adds content related to the Unviersity of Kentucky.",
+    "prefix": "bowman",
+    "main_file": "Bowman.lua",
+    "badge_colour": "0033a0",
+    "dependencies": [
+        "Steamodded (>=1.*)"
+    ],
+    "version": "1.0.0"
+}
