@@ -37,7 +37,7 @@ SMODS.Joker {
     
     calculate = function(self, card, context)
         -- When a card is scored, upgrade joker
-        if context.main_scoring and context.cardarea == G.play and not context.blueprint then
+        if context.individual and context.cardarea == G.play and not context.blueprint then
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
                 card = card,
