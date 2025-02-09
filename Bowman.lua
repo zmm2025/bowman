@@ -1,8 +1,8 @@
 SMODS.Atlas {
     key = "Jokers",
-    path = "jokers-bowman.png",
     px = 71,
-    py = 95
+    py = 95,
+    path = "jokers-bowman.png",
 }
 
 SMODS.Joker {
@@ -16,57 +16,60 @@ SMODS.Joker {
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
     },
-    config = { extra = { mult = 0, mult_gain = 1 } },
+    atlas = "Jokers", pos = { x = 0, y = 0 },
+    config = {
+        extra = {
+            mult = 0,
+            mult_gain = 1
+        }
+    },
+    rarity = 1, -- Common
     cost = 5,
-    rarity = 1,
     blueprint_compat = true,
-    perishable_compat = true,
     eternal_compat = true,
-
-    atlas = "Jokers",
-    pos = { x = 0, y = 0 },
+    perishable_compat = true,
     
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.mult,
-                card.ability.extra.mult_gain
+                card.ability.extra.mult, -- #1#
+                card.ability.extra.mult_gain, -- #2#
             }
         }
     end,
     
     calculate = function(self, card, context)
-        -- When a card is scored, upgrade joker
+        -- When a card is scored, upgrade Joker
         if context.individual and context.cardarea == G.play and not context.blueprint then
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
                 card = card,
                 colour = G.C.MULT,
-                message = localize("k_upgrade_ex")
+                message = localize("k_upgrade_ex"),
             }
         end
         
-        -- When joker is triggered, add mult
+        -- When Joker is triggered, add Mult
         if context.joker_main then
             return {
                 message = localize {
                     type = "variable",
                     key = "a_mult",
                     vars = {
-                        card.ability.extra.mult
-                    }
+                        card.ability.extra.mult,
+                    },
                 },
-                mult_mod = card.ability.extra.mult
+                mult_mod = card.ability.extra.mult,
             }
         end
 
-        -- At end of round, reset mult
+        -- At end of round, reset Mult
         if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.mult = 0
             return {
                 card = card,
                 colour = G.C.MULT,
-                message = localize("k_reset")
+                message = localize("k_reset"),
             }
         end
     end
