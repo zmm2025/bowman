@@ -61,7 +61,7 @@ SMODS.Joker {
         end
 
         -- At end of round, reset mult
-        if context.end_of_round and context.cardarea == G.jokers then
+        if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.mult = 0
             return {
                 card = card,
