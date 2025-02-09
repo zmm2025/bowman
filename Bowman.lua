@@ -50,8 +50,8 @@ SMODS.Joker {
             }
         end
         
-        -- When Joker is triggered, add Mult
-        if context.joker_main then
+        -- When Joker is triggered and Mult is >0, add Mult
+        if context.joker_main and card.ability.extra.mult > 0 then
             return {
                 message = localize {
                     type = "variable",
