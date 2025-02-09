@@ -1,6 +1,6 @@
 SMODS.Atlas {
-    key = "Bowman",
-    path = "Bowman.png",
+    key = "Jokers",
+    path = "jokers-bowman.png",
     px = 71,
     py = 95
 }
@@ -23,7 +23,7 @@ SMODS.Joker {
     perishable_compat = true,
     eternal_compat = true,
 
-    atlas = "Bowman",
+    atlas = "Jokers",
     pos = { x = 0, y = 0 },
     
     loc_vars = function(self, info_queue, card)
