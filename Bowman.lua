@@ -146,3 +146,51 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Joker: Scratch
+SMODS.Joker {
+    key = "scratch",
+    loc_txt = {
+        name = "Scratch",
+        text = {
+            "Played {C:attention}number{} cards have",
+            "a {C:green}#2# in #3#{} chance to give",
+            "{C:chips}+#1#{} Chips when scored",
+        },
+    },
+    atlas = "Jokers", pos = { x = 2, y = 0 },
+    config = {
+        extra = {
+            chips = 50,
+            odds = 2,
+        },
+    },
+    rarity = 2, -- Uncommon
+    cost = 6,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.chips, -- #1#
+                G.GAME.probabilities.normal or 1, -- #2#
+                card.ability.extra.odds, -- #3#
+            },
+        }
+    end,
+    
+    calculate = function(self, card, context)
+        -- When a card is scored, add Chips if random odds succeed
+        if (context.individual) and (context.cardarea == G.play) then
+            if (2 <= context.other_card:get_id()) and (context.other_card:get_id() <= 10) then
+                if pseudorandom("scratch") < G.GAME.probabilities.normal / card.ability.extra.odds then
+                    return {
+                        chips = card.ability.extra.chips,
+                    }
+                end
+            end
+        end
+    end,
+}
