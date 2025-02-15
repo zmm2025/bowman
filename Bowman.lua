@@ -29,7 +29,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -38,7 +38,7 @@ SMODS.Joker {
             },
         }
     end,
-    
+
     calculate = function(self, card, context)
         -- When a card is scored, upgrade Joker
         if (context.individual) and (context.cardarea == G.play) and (not context.blueprint) then
@@ -49,7 +49,7 @@ SMODS.Joker {
                 message = localize("k_upgrade_ex"),
             }
         end
-        
+
         -- When Joker is triggered and Mult is >0, add Mult
         if (context.joker_main) and (card.ability.extra.mult > 0) then
             return {
@@ -102,7 +102,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -113,7 +113,7 @@ SMODS.Joker {
             },
         }
     end,
-    
+
     calculate = function(self, card, context)
         -- When a card is scored, decrease scored cards counter
         if (context.individual) and (context.cardarea == G.play) and (not context.blueprint) then
@@ -130,7 +130,7 @@ SMODS.Joker {
                 }
             end
         end
-        
+
         -- When Joker is triggered and Mult is >0, add Mult
         if (context.joker_main) and (card.ability.extra.mult > 0) then
             return {
@@ -177,7 +177,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -187,19 +187,19 @@ SMODS.Joker {
             },
         }
     end,
-    
+
     calculate = function(self, card, context)
         -- When a card is scored, add Chips if random odds succeed
         if (context.individual) and (context.cardarea == G.play) then
             if (2 <= context.other_card:get_id()) and (context.other_card:get_id() <= 10) then
-                if pseudorandom("scratch") < G.GAME.probabilities.normal / card.ability.extra.odds then
+                if (pseudorandom("scratch") < G.GAME.probabilities.normal / card.ability.extra.odds) then
                     return {
                         chips = card.ability.extra.chips,
                     }
                 end
             end
         end
-        
+
         -- At end of round, meow
         if (context.end_of_round) and (context.cardarea == G.jokers) and (not context.game_over) then
             return {
