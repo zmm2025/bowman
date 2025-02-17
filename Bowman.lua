@@ -5,8 +5,7 @@ SMODS.Atlas {
     path = "jokers-bowman.png",
 }
 
--- Joker: Willy T.
-SMODS.Joker {
+SMODS.Joker { -- Joker: Willy T.
     key = "willy_t",
     loc_txt = {
         name = "Willy T.",
@@ -76,8 +75,7 @@ SMODS.Joker {
     end,
 }
 
--- Joker: Wildcat
-SMODS.Joker {
+SMODS.Joker { -- Joker: Wildcat
     key = "wildcat",
     loc_txt = {
         name = "Wildcat",
@@ -154,8 +152,7 @@ SMODS.Joker {
     end,
 }
 
--- Joker: Scratch
-SMODS.Joker {
+SMODS.Joker { -- Joker: Scratch
     key = "scratch",
     loc_txt = {
         name = "Scratch",
