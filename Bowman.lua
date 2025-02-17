@@ -32,7 +32,7 @@ SMODS.Joker { -- Joker: Willy T.
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.mult, -- #1#
+                card.ability.extra.mult,      -- #1#
                 card.ability.extra.mult_gain, -- #2#
             },
         }
@@ -94,10 +94,10 @@ SMODS.Joker { -- Joker: Wildcat
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.mult, -- #1#
-                card.ability.extra.mult_gain, -- #2#
+                card.ability.extra.mult,           -- #1#
+                card.ability.extra.mult_gain,      -- #2#
                 card.ability.extra.cards_to_score, -- #3#
-                card.ability.extra.scored_cards, -- #4#
+                card.ability.extra.scored_cards,   -- #4#
             },
         }
     end,
@@ -159,9 +159,9 @@ SMODS.Joker { -- Joker: Scratch
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.chips, -- #1#
+                card.ability.extra.chips,         -- #1#
                 G.GAME.probabilities.normal or 1, -- #2#
-                card.ability.extra.odds, -- #3#
+                card.ability.extra.odds,          -- #3#
             },
         }
     end,
@@ -214,7 +214,7 @@ SMODS.Joker { -- Joker: Tallest Building in the World
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.xmult, -- #1#
+                card.ability.extra.xmult,      -- #1#
                 card.ability.extra.xmult_gain, -- #2#
             },
         }
@@ -230,7 +230,7 @@ SMODS.Joker { -- Joker: Tallest Building in the World
             -- Find most played hands
             for _key, hand_name in pairs(G.handlist) do
                 if (G.GAME.hands[hand_name].visible) and (G.GAME.hands[hand_name].played > mphands_times_played) then
-                    mphands_names = {hand_name}
+                    mphands_names = { hand_name }
                     mphands_times_played = G.GAME.hands[hand_name].played
                 elseif (G.GAME.hands[hand_name].played == mphands_times_played) then
                     mphands_names[#mphands_names + 1] = hand_name
@@ -257,7 +257,6 @@ SMODS.Joker { -- Joker: Tallest Building in the World
                     message = localize("k_reset"),
                 }
             end
-
         end
 
         -- When Joker is triggered, apply xMult
