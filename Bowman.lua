@@ -44,6 +44,7 @@ SMODS.Joker { -- Joker: Willy T.
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
                 message = localize("k_upgrade_ex"),
+                delay = 0.4,
             }
         end
 
