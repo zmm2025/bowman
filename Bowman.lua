@@ -127,7 +127,7 @@ SMODS.Joker { -- Joker: Wildcat
         -- At end of round, meow
         if (context.end_of_round) and (context.cardarea == G.jokers) and (not context.game_over) then
             return {
-                message = "Meow!", -- TODO: Localize
+                message = localize("k_meow_ex"),
             }
         end
     end,
@@ -181,7 +181,7 @@ SMODS.Joker { -- Joker: Scratch
         -- At end of round, meow
         if (context.end_of_round) and (context.cardarea == G.jokers) and (not context.game_over) then
             return {
-                message = "Meow!", -- TODO: Localize
+                message = localize("k_meow_ex"),
             }
         end
     end,
