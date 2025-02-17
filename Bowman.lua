@@ -12,7 +12,7 @@ SMODS.Joker { -- Joker: Willy T.
         text = {
             "This Joker gains {C:mult}+#2#{} Mult when",
             "each played card is scored,",
-            "resets at end of round",
+            "resets when {C:attention}Boss Blind{} is defeated",
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
     },
@@ -55,8 +55,8 @@ SMODS.Joker { -- Joker: Willy T.
             }
         end
 
-        -- At end of round, reset Mult
-        if (context.end_of_round) and (context.cardarea == G.jokers) and (not context.blueprint) then
+        -- When Boss Blind is defeated, reset Mult
+        if (context.end_of_round) and (G.GAME.blind.boss) and (card.ability.extra.mult ~= 0) and (not context.blueprint) then
             card.ability.extra.mult = 0
             return {
                 message = localize("k_reset"),
