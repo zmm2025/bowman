@@ -43,8 +43,6 @@ SMODS.Joker { -- Joker: Willy T.
         if (context.individual) and (context.cardarea == G.play) and (not context.blueprint) then
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
-                card = card,
-                colour = G.C.MULT,
                 message = localize("k_upgrade_ex"),
             }
         end
@@ -52,14 +50,7 @@ SMODS.Joker { -- Joker: Willy T.
         -- When Joker is triggered and Mult is >0, add Mult
         if (context.joker_main) and (card.ability.extra.mult > 0) then
             return {
-                message = localize {
-                    type = "variable",
-                    key = "a_mult",
-                    vars = {
-                        card.ability.extra.mult,
-                    },
-                },
-                mult_mod = card.ability.extra.mult,
+                mult = card.ability.extra.mult,
             }
         end
 
@@ -67,8 +58,6 @@ SMODS.Joker { -- Joker: Willy T.
         if (context.end_of_round) and (context.cardarea == G.jokers) and (not context.blueprint) then
             card.ability.extra.mult = 0
             return {
-                card = card,
-                colour = G.C.MULT,
                 message = localize("k_reset"),
             }
         end
@@ -122,8 +111,6 @@ SMODS.Joker { -- Joker: Wildcat
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                 card.ability.extra.scored_cards = card.ability.extra.scored_cards + card.ability.extra.cards_to_score
                 return {
-                    card = card,
-                    colour = G.C.MULT,
                     message = localize("k_upgrade_ex"),
                 }
             end
@@ -132,14 +119,7 @@ SMODS.Joker { -- Joker: Wildcat
         -- When Joker is triggered and Mult is >0, add Mult
         if (context.joker_main) and (card.ability.extra.mult > 0) then
             return {
-                message = localize {
-                    type = "variable",
-                    key = "a_mult",
-                    vars = {
-                        card.ability.extra.mult,
-                    },
-                },
-                mult_mod = card.ability.extra.mult,
+                mult = card.ability.extra.mult,
             }
         end
 
