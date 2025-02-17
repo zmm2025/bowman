@@ -185,3 +185,85 @@ SMODS.Joker { -- Joker: Scratch
         end
     end,
 }
+
+SMODS.Joker { -- Joker: Tallest Building in the World
+    key = "tallest_building",
+    loc_txt = {
+        name = "Tallest Building in the World",
+        text = {
+            "This Joker gains {X:mult,C:white}X#2#{} Mult per",
+            "{C:attention}consecutive{} hand played while",
+            "playing your most played {C:attention}poker hand{}",
+            "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+        },
+    },
+    atlas = "Jokers", pos = { x = 3, y = 0 },
+    config = {
+        extra = {
+            xmult = 1,
+            xmult_gain = 0.1,
+        },
+    },
+    rarity = 3, -- Rare
+    cost = 8,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult, -- #1#
+                card.ability.extra.xmult_gain, -- #2#
+            },
+        }
+    end,
+
+    calculate = function(self, card, context)
+        -- When hand is played, if it's a most played hand, upgrade Joker, otherwise reset
+        if (context.before) and (not context.blueprint) then
+            -- Track data for most played hands
+            local mphands_names = {}
+            local mphands_times_played = -1
+
+            -- Find most played hands
+            for _key, hand_name in pairs(G.handlist) do
+                if (G.GAME.hands[hand_name].visible) and (G.GAME.hands[hand_name].played > mphands_times_played) then
+                    mphands_names = {hand_name}
+                    mphands_times_played = G.GAME.hands[hand_name].played
+                elseif (G.GAME.hands[hand_name].played == mphands_times_played) then
+                    mphands_names[#mphands_names + 1] = hand_name
+                end
+            end
+
+            -- Check if played hand is a most played hand
+            local is_mphand = false
+            for _key, mphand_name in pairs(mphands_names) do
+                if (mphand_name == context.scoring_name) then
+                    is_mphand = true
+                end
+            end
+
+            -- Upgrade Joker if played hand is a most played hand, otherwise reset Joker
+            if (is_mphand) then
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                return {
+                    message = localize("k_upgrade_ex"),
+                }
+            else
+                card.ability.extra.xmult = 1
+                return {
+                    message = localize("k_reset"),
+                }
+            end
+
+        end
+
+        -- When Joker is triggered, apply xMult
+        if (context.joker_main) then
+            return {
+                xmult = card.ability.extra.xmult,
+            }
+        end
+    end,
+}
